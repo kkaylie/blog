@@ -1,0 +1,9 @@
+.page-container {
+  background-color: var(--background);
+
+}
+
+.page-content {
+  background-color: var(--card);
+  color: var(--card-foreground);
+}
