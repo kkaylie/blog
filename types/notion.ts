@@ -1,7 +1,4 @@
-import type {
-  BlockObjectResponse,
-  PageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 export type PagePropertyValue = PageObjectResponse['properties'][string]
 
@@ -15,5 +12,5 @@ export interface BlogPost {
 }
 
 export interface PostContent extends BlogPost {
-  content: BlockObjectResponse[]
+  markdown: string
 }

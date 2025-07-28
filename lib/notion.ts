@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 
 import { getPropertyValue, pageToPost } from './notionHelpers'
 
@@ -7,6 +8,7 @@ import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoint
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
+const n2m = new NotionToMarkdown({ notionClient: notion })
 
 const databaseId = process.env.NOTION_DATABASE_ID!
 
@@ -55,17 +57,22 @@ export const getPostBySlug = async (slug: string) => {
   })
 
   if (response.results.length === 0) {
+    console.error(`No post found with slug: ${slug}`)
     return null
   }
   const page = response.results[0] as PageObjectResponse
 
-  const blockResponse = await notion.blocks.children.list({
-    block_id: page.id,
-  })
+  if (!page) {
+    console.error(`No page found for slug: ${slug}`)
+    return
+  }
+
+  const mdBlocks = await n2m.pageToMarkdown(page.id)
+  const mdString = n2m.toMarkdownString(mdBlocks).parent
 
   return {
     title: getPropertyValue(page.properties.Title),
     publishedDate: getPropertyValue(page.properties.PublishedDate),
-    content: blockResponse.results,
+    markdown: mdString,
   }
 }
