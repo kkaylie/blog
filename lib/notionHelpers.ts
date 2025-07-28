@@ -1,4 +1,5 @@
 import type { PagePropertyValue, BlogPost } from "@/types/notion";
+
 import type { PageObjectResponse } from "@notionhq/client";
 
 // Type-safe function to extract values from different property types

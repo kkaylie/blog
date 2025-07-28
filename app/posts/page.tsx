@@ -1,13 +1,16 @@
 import React from 'react'
+
 // import { Button } from '@/components/ui/button'
-import { PostCard } from '../components/PostCard'
 import Link from 'next/link'
+
 import { getPublishedPosts } from '@/lib/notion'
+
+import { PostCard } from '../components/PostCard'
 
 export default async function PostsList() {
   const posts = await getPublishedPosts()
   return (
-    <div className="h-full w-full py-4 px-4">
+    <div className="h-full w-full px-4 py-4">
       {posts.map((post) => (
         <Link key={post.id} href={`/posts/${post.slug}`}>
           <PostCard

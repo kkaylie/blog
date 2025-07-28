@@ -1,8 +1,9 @@
 import React from 'react'
+
 import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual'
 
 export function VirtualizedList({
-  children
+  children,
 }: {
   children?: (virtualRow: VirtualItem) => React.ReactNode
 }) {
@@ -12,15 +13,15 @@ export function VirtualizedList({
     count: 10000,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 35,
-    overscan: 5
+    overscan: 5,
   })
 
   return (
     <div ref={parentRef} className="h-full w-full overflow-auto">
       <div
-        className="w-full relative"
+        className="relative w-full"
         style={{
-          height: `${rowVirtualizer.getTotalSize()}px`
+          height: `${rowVirtualizer.getTotalSize()}px`,
         }}
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => (

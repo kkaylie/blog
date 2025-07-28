@@ -1,6 +1,6 @@
 import type {
-  PageObjectResponse,
   BlockObjectResponse,
+  PageObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
 export type PagePropertyValue = PageObjectResponse['properties'][string];

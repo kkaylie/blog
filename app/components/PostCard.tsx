@@ -1,12 +1,13 @@
 import React from 'react'
+
 import {
   Card,
-  CardAction,
+  // CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
+  // CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from '@/components/ui/card'
 
 interface Props {
@@ -22,7 +23,7 @@ export function PostCard({
   className,
   title,
   content,
-  description
+  description,
 }: // action,
 // footer
 Props) {

@@ -1,8 +1,10 @@
 import { Client } from '@notionhq/client';
+
+import { getPropertyValue, pageToPost } from './notionHelpers';
+
 import type {
   PageObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import { getPropertyValue, pageToPost } from './notionHelpers';
 
 
 

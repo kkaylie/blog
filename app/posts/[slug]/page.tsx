@@ -1,10 +1,13 @@
-import { getPostBySlug } from '@/lib/notion'
-import type { BlockObjectResponse } from '@notionhq/client'
-import { notFound } from 'next/navigation'
 import React from 'react'
 
+import { notFound } from 'next/navigation'
+
+import { getPostBySlug } from '@/lib/notion'
+
+import type { BlockObjectResponse } from '@notionhq/client'
+
 export default async function PostContent({
-  params
+  params,
 }: {
   params: { slug: string }
 }) {
@@ -14,7 +17,7 @@ export default async function PostContent({
     return notFound()
   }
   return (
-    <div className="h-full w-full py-4 px-4">
+    <div className="h-full w-full px-4 py-4">
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="text-sm text-gray-500">{post.publishedDate}</p>
       <div className="mt-4">
