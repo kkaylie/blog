@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
 
-import { getPropertyValue, pageToPost } from './notionHelpers'
+import { pageToPost } from './notionHelpers'
 
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
@@ -45,7 +45,6 @@ export const getPublishedPosts = async () => {
       }
       return 0
     })
-  console.log('Fetched Posts:', posts)
   return posts
 }
 

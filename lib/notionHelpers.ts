@@ -39,7 +39,6 @@ function getFlagValues(prop: PageObjectResponse['properties']) {
 
 export function pageToPost(page: PageObjectResponse): BlogPost {
   const props = page.properties
-  console.log('Page Properties:', props)
 
   return {
     id: page.id,

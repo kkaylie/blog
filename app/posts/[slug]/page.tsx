@@ -12,13 +12,13 @@ import { getPostBySlug } from '@/lib/notion'
 import type { Metadata } from 'next'
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
-  const { title, description, publishedDate, slug } = post || {}
-  console.log('title:', title)
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  const { title, description, publishedDate } = post || {}
 
   if (!title) {
     return {
@@ -45,11 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function PostContent({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default async function PostContent({ params }: Props) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
 
