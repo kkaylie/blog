@@ -20,16 +20,23 @@ export default async function PostContent({
   if (!post) {
     return notFound()
   }
-  const date = new Date(post.publishedDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
+  const date = new Date(post.publishedDate as string).toLocaleDateString(
+    'en-US',
+    {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    },
+  )
   return (
-    <article className="prose-pre:pt-10 container mx-auto max-w-3xl px-4 py-8">
-      <header className="mb-6">
-        <h1 className="text-4xl leading-tight font-bold">{post.title}</h1>
-        <p className="text-muted-foreground mt-2">Published on {date}</p>
+    <article className="prose-pre:pt-10 container mx-auto max-w-3xl px-4 py-4 lg:py-8">
+      <header className="mb-2 md:mb-4">
+        <h1 className="text-2xl leading-tight font-bold md:text-4xl">
+          {post.title}
+        </h1>
+        <p className="md:text-md text-muted-foreground mt-2 text-sm">
+          Published on {date}
+        </p>
       </header>
 
       <hr className="my-4" />

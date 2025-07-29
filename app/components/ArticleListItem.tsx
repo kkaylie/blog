@@ -31,7 +31,7 @@ export function ArticleListItem({ post }: ArticleListItemProps) {
             day: 'numeric',
           })}
         </p>
-        <h2 className="mt-2 text-2xl font-bold text-[var(--muted-foreground)] transition-colors group-hover:text-[var(--primary)]">
+        <h2 className="text-1xl mt-2 font-bold text-[var(--muted-foreground)] transition-colors group-hover:text-[var(--primary)] md:text-2xl">
           {post.title}
         </h2>
         <p className="mt-2 text-base text-[var(--muted-foreground)]">

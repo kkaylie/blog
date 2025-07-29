@@ -1,10 +1,10 @@
 export function Hero() {
   return (
-    <section className="py-4">
-      <h1 className="text-5xl font-bold tracking-tight text-[var(--foreground)]">
+    <section className="mx-auto max-w-2xl sm:pb-4">
+      <h1 className="text-3xl font-bold tracking-tight text-[var(--foreground)] md:text-5xl">
         Architecting for Scale
       </h1>
-      <p className="mt-4 max-w-2xl text-lg text-[var(--muted-foreground)]">
+      <p className="text-md mt-4 hidden text-[var(--muted-foreground)] sm:block md:text-lg">
         Hi, I&#39;m Kaylee. I&#39;m a front-end engineer who focused on
         engineering stable and efficient frontend systems. With experience on
         platforms serving over 100 million users, I specialize in improving web

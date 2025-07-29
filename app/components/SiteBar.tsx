@@ -5,9 +5,8 @@ import Link from 'next/link'
 
 export function SiteHeader() {
   return (
-    <header className="py-4">
+    <header className="mx-auto max-w-2xl py-2 sm:py-4">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Left Side: Avatar and Name */}
         <Link href="/" className="flex items-center gap-4">
           <Image
             src="/my-avatar.jpg"
@@ -17,8 +16,10 @@ export function SiteHeader() {
             className="rounded-full"
           />
           <div>
-            <p className="font-semibold text-[var(--foreground)]">Kaylee L.</p>
-            <p className="text-sm text-[var(--muted-foreground)]">
+            <p className="md:text-md text-sm font-semibold text-[var(--foreground)]">
+              Kaylee L.
+            </p>
+            <p className="hidden text-sm text-[var(--muted-foreground)] sm:block">
               Frontend Developer
             </p>
           </div>

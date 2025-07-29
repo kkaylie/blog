@@ -5,14 +5,14 @@ import { usePathname } from 'next/navigation'
 const navItems = [
   { id: 'home', name: 'HOME', href: '/' },
   { id: 'blog', name: 'BLOG', href: '/posts' },
-  { id: 'projects', name: 'PROJECTS', href: '/projects' },
-  { id: 'about', name: 'ABOUT', href: '/about' },
+  // { id: 'projects', name: 'PROJECTS', href: '/projects' },
+  // { id: 'about', name: 'ABOUT', href: '/about' },
 ]
 
 export function ContentNav() {
   const pathname = usePathname()
   return (
-    <nav className="pt-5 pb-4">
+    <nav className="mx-auto max-w-2xl pt-3 pb-4 md:pt-5">
       <ul className="-mb-px flex items-center gap-8 text-sm font-medium text-[var(--muted-foreground)]">
         {navItems.map((item) => {
           const isActive =
@@ -25,7 +25,7 @@ export function ContentNav() {
               <Link
                 href={item.href}
                 className={`group relative py-3 transition-colors duration-300 hover:text-[var(--foreground)] ${
-                  isActive ? 'text-[var(--foreground)]' : '' // 7. 如果是激活状态，则设置高亮文字颜色
+                  isActive ? 'text-[var(--foreground)]' : ''
                 }`}
               >
                 {item.name}
