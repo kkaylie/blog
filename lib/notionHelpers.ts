@@ -3,7 +3,7 @@ import type { PagePropertyValue, BlogPost } from '@/types/notion'
 import type { PageObjectResponse } from '@notionhq/client'
 
 // Type-safe function to extract values from different property types
-export function getPropertyValue(prop: PagePropertyValue): string {
+export function getPropertyValue(prop: PagePropertyValue) {
   // Use the 'type' field as a discriminant to safely access data
   if (!prop) {
     return ''
@@ -17,6 +17,10 @@ export function getPropertyValue(prop: PagePropertyValue): string {
       return prop.date?.start ?? ''
     case 'last_edited_time':
       return prop.last_edited_time
+    case 'multi_select':
+      return prop.multi_select.map((item) => item.name)
+    case 'select':
+      return prop.select?.name ?? ''
     // case 'number':
     //   return prop.number?.toString() ?? '';
     // case 'checkbox':
@@ -26,15 +30,25 @@ export function getPropertyValue(prop: PagePropertyValue): string {
   }
 }
 
+function getFlagValue(prop: PageObjectResponse['properties']) {
+  const flag = getPropertyValue(prop.Flag)
+  return {
+    isPinned: flag === 'Pinned',
+  }
+}
+
 export function pageToPost(page: PageObjectResponse): BlogPost {
   const props = page.properties
+  console.log('Page Properties:', props)
 
   return {
     id: page.id,
-    title: getPropertyValue(props.Title) ?? 'Untitled',
-    slug: getPropertyValue(props.Slug) ?? '',
-    publishedDate: getPropertyValue(props.PublishedDate) ?? '',
-    updatedDate: getPropertyValue(props.UpdatedDate) ?? '',
-    summary: getPropertyValue(props.Summary) ?? '',
+    title: (getPropertyValue(props.Title) as string) ?? 'Untitled',
+    slug: (getPropertyValue(props.Slug) as string) ?? '',
+    publishedDate: (getPropertyValue(props.PublishedDate) as string) ?? '',
+    updatedDate: (getPropertyValue(props.UpdatedDate) as string) ?? '',
+    summary: (getPropertyValue(props.Summary) as string) ?? '',
+    tags: (getPropertyValue(props.Tags) as string[]) ?? [],
+    ...getFlagValue(props),
   }
 }

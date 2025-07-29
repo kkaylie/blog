@@ -9,6 +9,8 @@ export interface BlogPost {
   publishedDate: string
   updatedDate: string
   summary: string
+  tags?: string[]
+  isPinned?: boolean
 }
 
 export interface PostContent extends BlogPost {

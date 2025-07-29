@@ -36,7 +36,16 @@ export const getPublishedPosts = async () => {
   const posts = response.results
     .filter((page): page is PageObjectResponse => page.object === 'page')
     .map(pageToPost)
-
+    .sort((a, b) => {
+      if (a.isPinned && !b.isPinned) {
+        return -1
+      }
+      if (!a.isPinned && b.isPinned) {
+        return 1
+      }
+      return 0
+    })
+  console.log('Fetched Posts:', posts)
   return posts
 }
 
