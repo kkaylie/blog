@@ -75,13 +75,14 @@ export const getPostBySlug = async (slug: string) => {
     console.error(`No page found for slug: ${slug}`)
     return
   }
+  const post = pageToPost(page)
 
   const mdBlocks = await n2m.pageToMarkdown(page.id)
   const mdString = n2m.toMarkdownString(mdBlocks).parent
 
   return {
-    title: getPropertyValue(page.properties.Title),
-    publishedDate: getPropertyValue(page.properties.PublishedDate),
     markdown: mdString,
+    description: post.summary,
+    ...post,
   }
 }

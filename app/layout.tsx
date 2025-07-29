@@ -5,8 +5,16 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Kaylee's Blog",
-  description: 'A personal blog by Kaylee L.',
+  title: {
+    template: "%s | Kaylee's Blog",
+    default: "Kaylee's Blog",
+  },
+  description:
+    'A personal blog by Kaylee L. exploring frontend development, design, and technology.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default function RootLayout({

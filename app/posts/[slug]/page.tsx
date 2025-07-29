@@ -9,6 +9,42 @@ import remarkGfm from 'remark-gfm'
 import { CodeBlock } from '@/app/components/CodeBlock'
 import { getPostBySlug } from '@/lib/notion'
 
+import type { Metadata } from 'next'
+
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug)
+  const { title, description, publishedDate, slug } = post || {}
+  console.log('title:', title)
+
+  if (!title) {
+    return {
+      title: 'Article Not Found',
+    }
+  }
+
+  return {
+    title,
+    description,
+    // social media metadata
+    // openGraph: {
+    //   title,
+    //   description,
+    //   type: 'article',
+    //   publishedTime: publishedDate,
+    //   url: `https://your-domain.com/posts/${slug}`,
+    // },
+    // twitter: {
+    //   card: 'summary_large_image',
+    //   title,
+    //   description,
+    // },
+  }
+}
+
 export default async function PostContent({
   params,
 }: {
@@ -16,10 +52,11 @@ export default async function PostContent({
 }) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
-  console.log('Post Content:', post)
+
   if (!post) {
     return notFound()
   }
+
   const date = new Date(post.publishedDate as string).toLocaleDateString(
     'en-US',
     {
@@ -29,12 +66,12 @@ export default async function PostContent({
     },
   )
   return (
-    <article className="prose-pre:pt-10 container mx-auto max-w-3xl px-4 py-4 lg:py-8">
+    <article className="prose-pre:pt-10 container mx-auto max-w-3xl px-4 py-4 md:py-6 lg:py-8">
       <header className="mb-2 md:mb-4">
         <h1 className="text-2xl leading-tight font-bold md:text-4xl">
           {post.title}
         </h1>
-        <p className="md:text-md text-muted-foreground mt-2 text-sm">
+        <p className="text-muted-foreground mt-2 text-sm">
           Published on {date}
         </p>
       </header>
