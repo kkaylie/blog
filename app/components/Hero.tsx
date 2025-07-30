@@ -15,7 +15,7 @@ export function Hero() {
         <h1 className="text-3xl font-bold tracking-tight text-[var(--foreground)] text-shadow-2xs text-shadow-white md:text-5xl">
           Rubber Duck Blog by KK.
         </h1>
-        <p className="text-md mt-4 hidden text-[var(--muted-foreground)] text-shadow-2xs text-shadow-white sm:block md:text-lg">
+        <p className="text-md mt-4 hidden text-[var(--foreground)] sm:block md:text-lg">
           Hi, I&#39;m Kaylee (KK)! I&#39;m a front-end engineer who focused on
           engineering stable and efficient frontend systems. I write about code,
           debugging, and the craft of engineering in a way even ducks might

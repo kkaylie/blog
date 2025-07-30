@@ -16,10 +16,10 @@ export function SiteHeader() {
             className="rounded-full border border-[var(--border)] shadow-sm"
           />
           <div>
-            <p className="md:text-md text-sm font-semibold text-[var(--foreground)] text-shadow-2xs text-shadow-white">
+            <p className="md:text-md text-sm font-bold text-[var(--foreground)]">
               Kaylee L.
             </p>
-            <p className="hidden text-sm text-[var(--muted-foreground)] text-shadow-2xs text-shadow-white sm:block">
+            <p className="hidden text-sm text-[var(--foreground)] sm:block">
               Frontend Developer
             </p>
           </div>

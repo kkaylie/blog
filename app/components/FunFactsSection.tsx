@@ -33,7 +33,7 @@ export default function FunFactsSection() {
   // })
 
   return (
-    <section className="mx-auto w-full p-4">
+    <section className="mx-auto w-full">
       <div
         className={clsx(
           'transition-all duration-700',

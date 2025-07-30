@@ -13,7 +13,7 @@ export function ContentNav() {
   const pathname = usePathname()
   return (
     <nav className="mx-auto max-w-2xl pt-3 pb-4 md:pt-5">
-      <ul className="-mb-px flex items-center gap-8 text-sm font-medium text-[var(--muted-foreground)]">
+      <ul className="-mb-px flex items-center gap-8 text-sm font-medium text-[var(--foreground)]">
         {navItems.map((item) => {
           const isActive =
             item.href === '/'
@@ -24,8 +24,10 @@ export function ContentNav() {
             <li key={item.name}>
               <Link
                 href={item.href}
-                className={`group relative py-3 transition-colors duration-300 text-shadow-2xs text-shadow-white hover:text-[var(--foreground)] ${
-                  isActive ? 'text-[var(--foreground)]' : ''
+                className={`group relative py-3 transition-colors duration-300 hover:text-yellow-500 ${
+                  isActive
+                    ? 'text-yellow-500 text-shadow-2xs text-shadow-black'
+                    : ''
                 }`}
               >
                 {item.name}

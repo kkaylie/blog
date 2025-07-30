@@ -3,7 +3,7 @@ import FunFactsSection from '../components/FunFactsSection'
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <main className="mx-auto max-w-4xl p-6 font-sans text-gray-800 md:p-12">
+      <main className="mx-auto max-w-4xl px-4 py-4 font-sans text-gray-800 sm:py-8">
         <div className="space-y-16">
           {/* Section 1: Intro */}
           <section className="text-left md:text-center">
