@@ -24,11 +24,7 @@ export function ContentNav() {
             <li key={item.name}>
               <Link
                 href={item.href}
-                className={`group relative py-3 transition-colors duration-300 hover:text-yellow-500 ${
-                  isActive
-                    ? 'text-yellow-500 text-shadow-2xs text-shadow-black'
-                    : ''
-                }`}
+                className={`group relative py-3 transition-colors duration-300`}
               >
                 {item.name}
                 <span
