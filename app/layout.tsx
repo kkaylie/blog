@@ -6,8 +6,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Kaylee's Blog",
-    default: "Kaylee's Blog",
+    template: "%s | KK's Blog",
+    default: "KK's Blog",
   },
   description:
     'A personal blog by Kaylee L. exploring frontend development, design, and technology.',
@@ -24,12 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-[var(--background)] text-[var(--foreground)]`}>
+      <body className="bg-[var(--background)] text-[var(--foreground)]">
         <HeaderContainer />
         <main className="min-h-screen w-full">
           <div className="mx-auto h-full max-w-2xl lg:w-7/12">{children}</div>
         </main>
-        <footer className="mt-12 border-t border-[var(--border)] py-6 text-center text-sm text-[var(--muted-foreground)]">
+        <footer className="border-t border-[var(--border)] py-6 text-center text-sm text-[var(--muted-foreground)]">
           <p>
             &copy; {new Date().getFullYear()} Kaylee L.. All Rights Reserved.
           </p>

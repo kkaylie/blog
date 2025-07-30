@@ -13,13 +13,13 @@ export function SiteHeader() {
             alt="Avatar"
             width={40}
             height={40}
-            className="rounded-full"
+            className="rounded-full border border-[var(--border)] shadow-sm"
           />
           <div>
-            <p className="md:text-md text-sm font-semibold text-[var(--foreground)]">
+            <p className="md:text-md text-sm font-semibold text-[var(--foreground)] text-shadow-2xs text-shadow-white">
               Kaylee L.
             </p>
-            <p className="hidden text-sm text-[var(--muted-foreground)] sm:block">
+            <p className="hidden text-sm text-[var(--muted-foreground)] text-shadow-2xs text-shadow-white sm:block">
               Frontend Developer
             </p>
           </div>
