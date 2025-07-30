@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const navItems = [
-  { id: 'home', name: 'HOME', href: '/' },
+  // { id: 'home', name: 'HOME', href: '/' },
   { id: 'blog', name: 'BLOG', href: '/posts' },
   // { id: 'projects', name: 'PROJECTS', href: '/projects' },
-  // { id: 'about', name: 'ABOUT', href: '/about' },
+  { id: 'about', name: 'ABOUT', href: '/about' },
 ]
 
 export function ContentNav() {
@@ -24,7 +24,7 @@ export function ContentNav() {
             <li key={item.name}>
               <Link
                 href={item.href}
-                className={`group relative py-3 transition-colors duration-300 hover:text-[var(--foreground)] ${
+                className={`group relative py-3 transition-colors duration-300 text-shadow-2xs text-shadow-white hover:text-[var(--foreground)] ${
                   isActive ? 'text-[var(--foreground)]' : ''
                 }`}
               >
