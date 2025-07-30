@@ -1,3 +1,5 @@
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
 import HeaderContainer from './components/HeaderContainer'
 
 import type { Metadata } from 'next'
