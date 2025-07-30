@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="bg-[var(--background)] text-[var(--foreground)]">
         <HeaderContainer />
         <main className="min-h-screen w-full">
-          <div className="mx-auto h-full max-w-2xl lg:w-7/12">{children}</div>
+          <div className="mx-auto h-full lg:w-7/12">{children}</div>
         </main>
         <footer className="border-t border-[var(--border)] py-6 text-center text-sm text-[var(--muted-foreground)]">
           <p>
