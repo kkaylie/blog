@@ -37,6 +37,8 @@ export default function RootLayout({
             &copy; {new Date().getFullYear()} Kaylee L.. All Rights Reserved.
           </p>
         </footer>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
