@@ -7,6 +7,7 @@ import RehypePrismPlus from 'rehype-prism-plus'
 import remarkGfm from 'remark-gfm'
 
 import { CodeBlock } from '@/app/components/CodeBlock'
+import { CodeSpan } from '@/app/components/CodeSpan'
 import { getPostBySlug } from '@/lib/notion'
 
 import type { Metadata } from 'next'
@@ -80,6 +81,7 @@ export default async function PostContent({ params }: Props) {
           rehypePlugins={[[RehypePrismPlus, { ignoreMissing: true }]]}
           components={{
             pre: CodeBlock,
+            code: CodeSpan,
             a: ({ node, ...props }) => <a {...props} className="break-all" />,
           }}
         >

@@ -32,7 +32,7 @@ export const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
         <span>{lang}</span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 rounded-md p-1 transition-colors hover:bg-white/20"
+          className="flex cursor-pointer items-center gap-1 rounded-md p-1 transition-colors hover:bg-white/20"
           aria-label="Copy code"
         >
           <span>Copy</span>
