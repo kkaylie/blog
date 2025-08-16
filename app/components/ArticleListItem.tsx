@@ -19,7 +19,7 @@ export function ArticleListItem({ post }: ArticleListItemProps) {
       )}
       <Link href={`/posts/${post.slug}`} className="group block cursor-pointer">
         <p className="text-xs tracking-wider text-[var(--muted-foreground)] uppercase">
-          {new Date(post.publishedDate).toLocaleDateString('en-US', {
+          {new Date(+post.publishedDate).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
