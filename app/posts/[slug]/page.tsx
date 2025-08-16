@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 
 import { CodeBlock } from '@/app/components/CodeBlock'
 import { CodeSpan } from '@/app/components/CodeSpan'
+import { Badge } from '@/components/ui/badge'
 import { query } from '@/lib/ApolloClient'
 import {
   GetPostBySlugDocument,
@@ -75,6 +76,13 @@ export default async function PostContent({ params }: Props) {
         <h1 className="text-2xl leading-tight font-bold md:text-4xl">
           {post.title}
         </h1>
+        <div className="my-4">
+          {post.tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="mr-2">
+              {tag}
+            </Badge>
+          ))}
+        </div>
         <p className="text-muted-foreground mt-2 text-sm">
           Published on {date}
         </p>
