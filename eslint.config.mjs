@@ -15,9 +15,7 @@ const eslintConfig = [
   ...compat.extends('next/core-web-vitals'),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      import: eslintPluginImport,
-    },
+    ignores: ['.next/**', 'node_modules/**'],
     settings: {
       'import/resolver': {
         typescript: {
