@@ -8,7 +8,12 @@ import remarkGfm from 'remark-gfm'
 
 import { CodeBlock } from '@/app/components/CodeBlock'
 import { CodeSpan } from '@/app/components/CodeSpan'
-import { getPostBySlug } from '@/lib/notion'
+import { query } from '@/lib/ApolloClient'
+import {
+  GetPostBySlugDocument,
+  GetPostBySlugQuery,
+} from '@/lib/graphql/generated/graphql'
+import { formatPostDataForDetail } from '@/lib/post'
 
 import type { Metadata } from 'next'
 
@@ -18,14 +23,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
-  const { title, description, publishedDate } = post || {}
-
-  if (!title) {
-    return {
-      title: 'Article Not Found',
-    }
+  const { data } = await query<GetPostBySlugQuery>({
+    query: GetPostBySlugDocument,
+    variables: { slug },
+  })
+  if (!data.post) {
+    return { title: 'Post Not Found' }
   }
+  const post = formatPostDataForDetail(data.post)
+  const { title, summary: description, publishedDate } = post || {}
 
   return {
     title,
@@ -48,20 +54,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostContent({ params }: Props) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
 
-  if (!post) {
+  const { data } = await query<GetPostBySlugQuery>({
+    query: GetPostBySlugDocument,
+    variables: { slug },
+  })
+  if (!data.post) {
     return notFound()
   }
+  const post = formatPostDataForDetail(data.post)
 
-  const date = new Date(post.publishedDate as string).toLocaleDateString(
-    'en-US',
-    {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    },
-  )
+  const date = new Date(+post.publishedDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
   return (
     <article className="prose-pre:pt-10 container mx-auto max-w-3xl px-4 py-4 md:py-6 lg:py-8">
       <header className="mb-2 md:mb-4">

@@ -3,16 +3,10 @@ import Link from 'next/link'
 import { Pin } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
+import { BlogPost } from '@/types/post'
 
-interface ArticleListItemProps {
-  post: {
-    slug: string
-    publishedDate: string
-    title: string
-    summary: string
-    tags?: string[]
-    isPinned?: boolean
-  }
+export interface ArticleListItemProps {
+  post: BlogPost
 }
 
 export function ArticleListItem({ post }: ArticleListItemProps) {

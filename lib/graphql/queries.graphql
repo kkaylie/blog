@@ -1,0 +1,28 @@
+fragment PostFragment on Post {
+  id
+  title
+  slug
+  summary
+  cover
+  icon
+  published_date
+  is_pinned
+  tags
+}
+
+fragment PostContentFragment on Post {
+  ...PostFragment
+  markdown
+}
+
+query GetPostsList {
+  posts {
+    ...PostFragment
+  }
+}
+
+query GetPostBySlug($slug: String!) {
+  post(slug: $slug) {
+    ...PostContentFragment
+  }
+}
